@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>งานประเพณีลอยกระทง ๓ มิติ | Interactive 3D Loy Krathong</title>
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+  <!-- 3D WebGL Canvas Container -->
+  <div id="canvas-container"></div>
+
+  <!-- Header Banner -->
+  <header class="app-header glass">
+    <div class="festival-badge">🪷</div>
+    <div class="title-group">
+      <h1>งานประเพณีลอยกระทง ๓ มิติ</h1>
+      <p>คืนวันเพ็ญเดือนสิบสอง ร่วมขอขมาพระแม่คงคา</p>
+    </div>
+  </header>
+
+  <!-- Floating Toast Notification -->
+  <div id="toast-msg" class="toast"></div>
+
+  <!-- Walk Mode WASD Navigation HUD Hint -->
+  <div id="wasd-hud" class="wasd-hud glass">
+    <div class="hud-content">
+      <span class="hud-keys">⌨️ <b>W A S D</b> หรือ <b>ลูกศร</b> เพื่อเดินชมงานวัด</span>
+      <span class="hud-mouse">🖱️ <b>คลิกลากเมาส์</b> เพื่อหันมองรอบตัว</span>
+    </div>
+  </div>
+
+  <!-- Wish Hover/Click Tooltip Card -->
+  <div id="wish-popup" class="wish-tooltip glass">
+    <div id="popup-author" class="popup-author">ชื่อผู้ลอย</div>
+    <div id="popup-type" class="popup-type">กระทงใบตองดั้งเดิม</div>
+    <div id="popup-wish" class="popup-wish">“คำอธิษฐาน”</div>
+  </div>
+
+  <!-- Floating Action Toolbar (Bottom Center) -->
+  <div class="action-toolbar glass">
+    <button id="btn-open-modal" class="action-btn btn-primary">
+      <span>🪷</span>
+      <span>ลอยกระทง</span>
+    </button>
+    <button id="btn-walk" class="action-btn">
+      <span>🚶</span>
+      <span>เดินเที่ยวงาน (WASD)</span>
+    </button>
+    <button id="btn-firework" class="action-btn">
+      <span>🎆</span>
+      <span>จุดพลุฉลอง</span>
+    </button>
+    <button id="btn-camera" class="action-btn">
+      <span>🎥</span>
+      <span>มุมกล้องอิสระ</span>
+    </button>
+    <button id="btn-sound" class="action-btn">
+      <span>🔊</span>
+      <span>เสียง: เปิด</span>
+    </button>
+  </div>
+
+  <!-- Krathong Creator Modal (Glassmorphism) -->
+  <div id="creator-modal" class="modal-overlay">
+    <div class="creator-card glass">
+      <button id="btn-close-modal" class="modal-close-btn" aria-label="Close">&times;</button>
+      
+      <div class="modal-header">
+        <h2>ประดิษฐ์กระทงและขอพร</h2>
+        <p>เลือกแบบกระทงที่คุณชื่นชอบและตั้งจิตอธิษฐาน</p>
+      </div>
+
+      <!-- Krathong Style Selector -->
+      <span class="section-label">เลือกแบบกระทง:</span>
+      <div class="style-selector">
+        <div class="style-card active" data-style="traditional">
+          <span class="style-icon">🍃</span>
+          <span class="style-name">ใบตองดั้งเดิม</span>
+        </div>
+        <div class="style-card" data-style="lotus">
+          <span class="style-icon">🪷</span>
+          <span class="style-name">ดอกบัวสวรรค์</span>
+        </div>
+        <div class="style-card" data-style="coconut">
+          <span class="style-icon">🥥</span>
+          <span class="style-name">กะลามะพร้าว</span>
+        </div>
+      </div>
+
+      <!-- Form Inputs -->
+      <div class="form-group">
+        <label for="input-author" class="section-label">ชื่อของคุณ:</label>
+        <input type="text" id="input-author" placeholder="เช่น กฤษณ์ และครอบครัว" maxlength="40">
+      </div>
+
+      <div class="form-group">
+        <label for="input-wish" class="section-label">คำอธิษฐาน / ข้อความขอพร:</label>
+        <textarea id="input-wish" placeholder="ขอขมาพระแม่คงคา และขอให้มีแต่ความสุขความเจริญ สุขภาพแข็งแรง..." maxlength="150"></textarea>
+      </div>
+
+      <button id="btn-float" class="btn-submit-float">
+        ลอยกระทงสู่สายน้ำ 🪷
+      </button>
+    </div>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
